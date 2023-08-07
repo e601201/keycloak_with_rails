@@ -11,6 +11,13 @@
   </head>
 
   <body>
+    <div>
+        <% if user_signed_in? %>
+          <%= button_to "ログアウト", '/logout', method: :delete %>
+        <% else %>
+          <%= button_to "keycloak_ログイン", '/auth/keycloak', data: {turbo: false} %>
+        <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
