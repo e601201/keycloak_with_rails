@@ -1,7 +1,7 @@
 # README
 
 ```
-$ docker compose -f keycloak/docker-compose.yml -d
+$ docker compose -f keycloak/docker-compose.yml up
 ```
 
 ```
