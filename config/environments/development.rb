@@ -8,6 +8,14 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  config.session_store :redis_session_store,
+  key: 'your_session_key',
+  redis: {
+    expire_after: 120.minutes,
+    key_prefix: 'myapp:session:',
+    url: 'redis://localhost:6379/0'
+  }
+
   # Do not eager load code on boot.
   config.eager_load = false
 

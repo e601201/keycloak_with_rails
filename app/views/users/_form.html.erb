@@ -11,27 +11,49 @@
     </div>
   <% end %>
 
+  <% if request.path == new_user_path %>
+    <div>
+      <%= form.label "ユーザーネーム(必須)", style: "display: block" %>
+      <%= form.text_field :user_name, required: true %>
+    </div>
+  <% else %>
+    <div>
+      <%= form.label "ユーザーネーム", style: "display: block" %>
+      <%= user.user_name %>
+    </div>
+  <% end %>
+
   <div>
-    <%= form.label :first_name, style: "display: block" %>
+    <%= form.label "名", style: "display: block" %>
     <%= form.text_field :first_name %>
   </div>
 
   <div>
-    <%= form.label :last_name, style: "display: block" %>
+    <%= form.label "姓", style: "display: block" %>
     <%= form.text_field :last_name %>
   </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
+  <% if request.path == new_user_path %>
+    <div>
+      <%= form.label "メールアドレス(必須)", style: "display: block" %>
+      <%= form.text_field :email, required: true %>
+    </div>
+    <div>
+      <%= form.label "パスワード(必須)", style: "display: block" %>
+      <%= form.password_field :password, required: true %>
+    </div>
 
+    <div>
+      <%= form.label "パスワード確認(必須)", style: "display: block" %>
+      <%= form.password_field :password_confirmation, required: true %>
+    </div>
+  <% else %>
+    <div>
+      <%= form.label "メールアドレス(必須)", style: "display: block" %>
+      <%= user.email %>
+    </div>
+  <% end %>
   <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.text_field :password %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "作成" %>
   </div>
 <% end %>

@@ -12,11 +12,12 @@
 
   <body>
     <div>
-        <% if user_signed_in? %>
-          <%= button_to "ログアウト", '/logout', method: :delete %>
-        <% else %>
-          <%= button_to "keycloak_ログイン", '/auth/keycloak', data: {turbo: false} %>
-        <% end %>
+      <% if user_signed_in? %>
+        <%= button_to "ログアウト", '/logout', method: :delete, data: { turbo_confirm: '本当にログアウトしますか？' }%>
+      <% else %>
+        <%= button_to "ログイン", '/auth/keycloak', data: {turbo: false} %>
+        <%= link_to "新規会員登録", new_user_path, data: {turbo: false} %>
+      <% end %>
     </div>
     <%= yield %>
   </body>
